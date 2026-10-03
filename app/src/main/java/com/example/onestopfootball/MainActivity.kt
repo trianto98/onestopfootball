@@ -39,6 +39,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.onestopfootball.ui.theme.OneStopFootballTheme
+import com.example.onestopfootball.ui.login.LoginScreen
+import com.example.onestopfootball.ui.account.AccountScreen
 
 
 class MainActivity : ComponentActivity() {

@@ -7,9 +7,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,8 +18,9 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun AccountScreen(
-    isLoggedIn: Boolean,
+    username: String?,
     onLoginClick: () -> Unit,
+    onRegisterClick: () -> Unit,
     onLogoutClick: () -> Unit
 ) {
 
@@ -27,36 +28,27 @@ fun AccountScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(24.dp),
-
         horizontalAlignment = Alignment.CenterHorizontally,
-
         verticalArrangement = Arrangement.Center
     ) {
 
-        if (isLoggedIn) {
+        if (username != null) {
 
             Text(
-                text = "Welcome!",
+                text = "Halo, $username!",
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold
             )
 
-            Spacer(
-                modifier = Modifier.height(8.dp)
-            )
+            Spacer(Modifier.height(8.dp))
 
-            Text(
-                text = "demo@onestopfootball.com"
-            )
+            Text("Welcome to One Stop Football.")
 
-            Spacer(
-                modifier = Modifier.height(24.dp)
-            )
+            Spacer(Modifier.height(24.dp))
 
             OutlinedButton(
                 onClick = onLogoutClick
             ) {
-
                 Text("Logout")
             }
 
@@ -68,23 +60,24 @@ fun AccountScreen(
                 fontWeight = FontWeight.Bold
             )
 
-            Spacer(
-                modifier = Modifier.height(8.dp)
-            )
+            Spacer(Modifier.height(8.dp))
 
-            Text(
-                text = "You can browse One Stop Football without logging in."
-            )
+            Text("You can browse football content without an account.")
 
-            Spacer(
-                modifier = Modifier.height(20.dp)
-            )
+            Spacer(Modifier.height(24.dp))
 
             Button(
                 onClick = onLoginClick
             ) {
-
                 Text("Login")
+            }
+
+            Spacer(Modifier.height(8.dp))
+
+            OutlinedButton(
+                onClick = onRegisterClick
+            ) {
+                Text("Create Account")
             }
         }
     }
